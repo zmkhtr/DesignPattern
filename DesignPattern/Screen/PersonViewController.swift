@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PersonViewController.swift
 //  DesignPattern
 //
 //  Created by Azam Mukhtar on 03/05/23.
@@ -9,32 +9,14 @@ import UIKit
 
 class PersonViewController: UITableViewController {
 
-    private let viewModel = PersonViewModel()
+    private let presenter = PersonPresenter()
     private var persons: [Person] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
-        viewModel.load()
-    }
-
-    func bindViewModel() {
-        viewModel.onPersonsLoad = { [weak self] persons in
-            guard let self = self else { return }
-            self.persons = persons
-            self.tableView.reloadData()
-        }
-        
-        viewModel.onLoadingStateChange = { [weak self] isLoading in
-            guard let self = self else { return }
-            print("Handle Loading \(isLoading)")
-        }
-        
-        viewModel.onErrorStateChange = { [weak self] errorMessage in
-            guard let self = self else { return }
-            print("Handle Error \(errorMessage)")
-        }
+        presenter.delegate = self
+        presenter.load()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,3 +43,18 @@ class PersonViewController: UITableViewController {
     
 }
 
+
+extension PersonViewController: PersonViewDelegate {
+    func onLoadingStateChange(isLoading: Bool) {
+        print("Handle loading \(isLoading)")
+    }
+    
+    func onErrorStateChange(error: String?) {
+        print("Handle error \(error)")
+    }
+    
+    func onPersonsLoad(persons: [Person]) {
+        self.persons = persons
+        self.tableView.reloadData()
+    }
+}
