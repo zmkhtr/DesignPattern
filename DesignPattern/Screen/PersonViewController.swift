@@ -9,25 +9,31 @@ import UIKit
 
 class PersonViewController: UITableViewController {
 
-    private let loader = PersonLoader()
+    private let viewModel = PersonViewModel()
     private var persons: [Person] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        load()
+        bindViewModel()
+        viewModel.load()
     }
 
-    func load() {
-        loader.load { [weak self] result in
+    func bindViewModel() {
+        viewModel.onPersonsLoad = { [weak self] persons in
             guard let self = self else { return }
-            switch result {
-            case .success(let persons):
-                self.persons = persons
-                self.tableView.reloadData()
-            case .failure(let error):
-                print("Error \(error)")
-            }
+            self.persons = persons
+            self.tableView.reloadData()
+        }
+        
+        viewModel.onLoadingStateChange = { [weak self] isLoading in
+            guard let self = self else { return }
+            print("Handle Loading \(isLoading)")
+        }
+        
+        viewModel.onErrorStateChange = { [weak self] errorMessage in
+            guard let self = self else { return }
+            print("Handle Error \(errorMessage)")
         }
     }
     

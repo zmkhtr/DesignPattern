@@ -15,6 +15,7 @@
 		20D74BC82A01EB5500FE7167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D74BC62A01EB5500FE7167 /* LaunchScreen.storyboard */; };
 		20D74BD02A02023300FE7167 /* PersonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D74BCF2A02023300FE7167 /* PersonLoader.swift */; };
 		20D74BD32A0241CB00FE7167 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D74BD22A0241CB00FE7167 /* Person.swift */; };
+		20D74BD82A02439700FE7167 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D74BD72A02439700FE7167 /* PersonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		20D74BC92A01EB5500FE7167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20D74BCF2A02023300FE7167 /* PersonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonLoader.swift; sourceTree = "<group>"; };
 		20D74BD22A0241CB00FE7167 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		20D74BD72A02439700FE7167 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				20D74BBF2A01EB5300FE7167 /* PersonViewController.swift */,
 				20D74BCF2A02023300FE7167 /* PersonLoader.swift */,
 				20D74BD22A0241CB00FE7167 /* Person.swift */,
+				20D74BD72A02439700FE7167 /* PersonViewModel.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				20D74BD32A0241CB00FE7167 /* Person.swift in Sources */,
 				20D74BD02A02023300FE7167 /* PersonLoader.swift in Sources */,
 				20D74BC02A01EB5300FE7167 /* PersonViewController.swift in Sources */,
+				20D74BD82A02439700FE7167 /* PersonViewModel.swift in Sources */,
 				20D74BBC2A01EB5300FE7167 /* AppDelegate.swift in Sources */,
 				20D74BBE2A01EB5300FE7167 /* SceneDelegate.swift in Sources */,
 			);
