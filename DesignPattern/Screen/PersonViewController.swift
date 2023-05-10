@@ -9,7 +9,7 @@ import UIKit
 
 class PersonViewController: UITableViewController {
 
-    private let loader = PersonLoader()
+    private let viewModel = PersonViewModel()
     private var persons: [Person] = []
     
     public lazy var refreshController: UIRefreshControl = {
@@ -24,19 +24,30 @@ class PersonViewController: UITableViewController {
         tableView.refreshControl = refreshController
        
         load()
+        bindViewModel()
     }
     
     @objc func load() {
-        tableView.refreshControl?.beginRefreshing()
-        loader.load { [weak self] result in
+        viewModel.load()
+    }
+    
+    func bindViewModel() {
+        viewModel.onPersonsLoad = { [weak self] persons in
             guard let self = self else { return }
-            self.tableView.refreshControl?.endRefreshing()
-            switch result {
-            case let .success(persons):
-                self.persons = persons
-                self.tableView.reloadData()
-            case let .failure(error):
-                self.showErrorAlert(errorMessage: error.localizedDescription)
+            self.persons = persons
+            self.tableView.reloadData()
+        }
+        
+        viewModel.onLoadingStateChange = { [weak self] isLoading in
+            guard let self = self else { return }
+            let refreshControl = self.tableView.refreshControl
+            isLoading ? refreshControl?.beginRefreshing() : refreshControl?.endRefreshing()
+        }
+        
+        viewModel.onErrorStateChange = { [weak self] errorMessage in
+            guard let self = self else { return }
+            if let errorMessage {
+                showErrorAlert(errorMessage: errorMessage)
             }
         }
     }
@@ -71,17 +82,17 @@ class PersonViewController: UITableViewController {
 }
 
 
-extension PersonViewController: PersonViewDelegate {
-    func onLoadingStateChange(isLoading: Bool) {
-        isLoading ? tableView.refreshControl?.beginRefreshing() : tableView.refreshControl?.endRefreshing()
-    }
-    
-    func onErrorStateChange(error: String?) {
-//        showErrorAlert(errorMessage: error)
-    }
-    
-    func onPersonsLoad(persons: [Person]) {
-        self.persons = persons
-        self.tableView.reloadData()
-    }
-}
+//extension PersonViewController: PersonViewDelegate {
+//    func onLoadingStateChange(isLoading: Bool) {
+//        isLoading ? tableView.refreshControl?.beginRefreshing() : tableView.refreshControl?.endRefreshing()
+//    }
+//
+//    func onErrorStateChange(error: String?) {
+////        showErrorAlert(errorMessage: error)
+//    }
+//
+//    func onPersonsLoad(persons: [Person]) {
+//        self.persons = persons
+//        self.tableView.reloadData()
+//    }
+//}

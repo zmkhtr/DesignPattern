@@ -7,31 +7,29 @@
 
 import Foundation
 
-protocol PersonViewDelegate: AnyObject {
-    func onLoadingStateChange(isLoading: Bool)
-    func onErrorStateChange(error: String?)
-    func onPersonsLoad(persons: [Person])
-}
-
-class PersonPresenter {
+class PersonViewModel {
+    typealias Observer<T> = (T) -> Void
     
     private let loader = PersonLoader()
+
+    var onLoadingStateChange: Observer<Bool>?
+    var onErrorStateChange: Observer<String?>?
+    var onPersonsLoad: Observer<[Person]>?
     
-    weak var delegate: PersonViewDelegate?
     
     func load() {
-        delegate?.onLoadingStateChange(isLoading: true)
-        delegate?.onErrorStateChange(error: nil)
+        onLoadingStateChange?(true)
+        onErrorStateChange?(nil)
         
         loader.load { [weak self] result in
             guard let self = self else { return }
-            self.delegate?.onLoadingStateChange(isLoading: false)
-
+            self.onLoadingStateChange?(false)
+            
             switch result {
             case let .success(persons):
-                self.delegate?.onPersonsLoad(persons: persons)
+                self.onPersonsLoad?(persons)
             case .failure:
-                self.delegate?.onErrorStateChange(error: "Error Fetching Data")
+                self.onErrorStateChange?("Error Fetching Data")
             }
         }
     }
