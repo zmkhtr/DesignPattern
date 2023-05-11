@@ -16,6 +16,7 @@
 		20D74BD02A02023300FE7167 /* PersonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D74BCF2A02023300FE7167 /* PersonLoader.swift */; };
 		20D74BD32A0241CB00FE7167 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D74BD22A0241CB00FE7167 /* Person.swift */; };
 		20D74BD82A02439700FE7167 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D74BD72A02439700FE7167 /* PersonViewModel.swift */; };
+		20F843EE2A0CB8190045D3B1 /* PersonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F843ED2A0CB8190045D3B1 /* PersonPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		20D74BCF2A02023300FE7167 /* PersonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonLoader.swift; sourceTree = "<group>"; };
 		20D74BD22A0241CB00FE7167 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		20D74BD72A02439700FE7167 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
+		20F843ED2A0CB8190045D3B1 /* PersonPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				20D74BCF2A02023300FE7167 /* PersonLoader.swift */,
 				20D74BD22A0241CB00FE7167 /* Person.swift */,
 				20D74BD72A02439700FE7167 /* PersonViewModel.swift */,
+				20F843ED2A0CB8190045D3B1 /* PersonPresenter.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				20D74BD02A02023300FE7167 /* PersonLoader.swift in Sources */,
 				20D74BC02A01EB5300FE7167 /* PersonViewController.swift in Sources */,
 				20D74BD82A02439700FE7167 /* PersonViewModel.swift in Sources */,
+				20F843EE2A0CB8190045D3B1 /* PersonPresenter.swift in Sources */,
 				20D74BBC2A01EB5300FE7167 /* AppDelegate.swift in Sources */,
 				20D74BBE2A01EB5300FE7167 /* SceneDelegate.swift in Sources */,
 			);
